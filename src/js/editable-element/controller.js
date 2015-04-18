@@ -85,7 +85,7 @@ angular.module('xeditable').factory('editableController',
             this.$form.$save();
 //            this.$form.$hide();
         }
-    }
+    };
 
     //init
     self.init = function(single) {

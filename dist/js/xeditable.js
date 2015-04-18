@@ -1,7 +1,7 @@
 /*!
 angular-xeditable - 0.1.9
 Edit-in-place for angular.js
-Build date: 2015-03-26 
+Build date: 2015-04-18 
 */
 /**
  * Angular-xeditable module 
@@ -428,6 +428,17 @@ angular.module('xeditable').factory('editableController',
      * @memberOf editable-element
      */     
     // no real `blur` property as it is transfered to editable form
+    self.scope.onJeffClick = function()
+    {
+        if($attrs.jeffName) {
+            var editableAttr = $attrs.editableText;
+            ObjectUtils.setProperty($scope, editableAttr, self.scope.$data);
+            var jeffName = $attrs.jeffName;
+            ObjectUtils.setProperty($scope, jeffName, self.scope.$data);
+            this.$form.$save();
+//            this.$form.$hide();
+        }
+    };
 
     //init
     self.init = function(single) {
@@ -2147,7 +2158,7 @@ angular.module('xeditable').factory('editableThemes', function() {
       inputTpl:     '',
       errorTpl:     '<div class="editable-error" ng-show="$error" ng-bind="$error"></div>',
       buttonsTpl:   '<span class="editable-buttons"></span>',
-      submitTpl:    '<button type="submit">save</button>',
+      submitTpl:    '<button type="submit" ng-click="onJeffClick()">save</button>',
       cancelTpl:    '<button type="button" ng-click="$form.$cancel()">cancel</button>'
     },
 
@@ -2159,7 +2170,7 @@ angular.module('xeditable').factory('editableThemes', function() {
       inputTpl:    '',
       errorTpl:    '<div class="editable-error help-block" ng-show="$error" ng-bind="$error"></div>',
       buttonsTpl:  '<span class="editable-buttons"></span>',
-      submitTpl:   '<button type="submit" class="btn btn-primary"><span></span></button>',
+      submitTpl:   '<button type="submit" class="btn btn-primary" ng-click="onJeffClick()"><span class="icon-ok icon-white"></span></button>',
       cancelTpl:   '<button type="button" class="btn" ng-click="$form.$cancel()">'+
                       '<span></span>'+
                    '</button>'
@@ -2174,7 +2185,7 @@ angular.module('xeditable').factory('editableThemes', function() {
       inputTpl:    '',
       errorTpl:    '<div class="editable-error help-block" ng-show="$error" ng-bind="$error"></div>',
       buttonsTpl:  '<span class="editable-buttons"></span>',
-      submitTpl:   '<button type="submit" class="btn btn-primary"><span></span></button>',
+      submitTpl:   '<button type="submit" class="btn btn-primary" ng-click="onJeffClick()"><span class="glyphicon glyphicon-ok"></span></button>',
       cancelTpl:   '<button type="button" class="btn btn-default" ng-click="$form.$cancel()">'+
                      '<span></span>'+
                    '</button>',
