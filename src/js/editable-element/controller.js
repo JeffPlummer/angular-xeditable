@@ -75,6 +75,17 @@ angular.module('xeditable').factory('editableController',
      * @memberOf editable-element
      */     
     // no real `blur` property as it is transfered to editable form
+    self.scope.onJeffClick = function()
+    {
+        if($attrs.jeffName) {
+            var editableAttr = $attrs.editableText;
+            ObjectUtils.setProperty($scope, editableAttr, self.scope.$data);
+            var jeffName = $attrs.jeffName;
+            ObjectUtils.setProperty($scope, jeffName, self.scope.$data);
+            this.$form.$save();
+//            this.$form.$hide();
+        }
+    }
 
     //init
     self.init = function(single) {
